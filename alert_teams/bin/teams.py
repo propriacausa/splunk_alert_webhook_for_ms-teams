@@ -16,15 +16,15 @@ def send_webhook_teams(url, body, user_agent=None):
         req = urllib2.Request(url, body, {"Content-Type": "application/json", "User-Agent": user_agent})
         res = urllib2.urlopen(req)
         if 200 <= res.code < 300:
-            print >> sys.stderr, "INFO Webhook receiver responded with HTTP status=%d" % res.code
+            print >> sys.stderr, "INFO Teams webhook receiver responded with HTTP status=%d" % res.code
             return True
         else:
-            print >> sys.stderr, "ERROR Webhook receiver responded with HTTP status=%d" % res.code
+            print >> sys.stderr, "ERROR Teams webhook receiver responded with HTTP status=%d" % res.code
             return False
     except urllib2.HTTPError, e:
-        print >> sys.stderr, "ERROR Error sending webhook request: %s" % e
+        print >> sys.stderr, "ERROR Error sending Teams webhook request: %s" % e
     except urllib2.URLError, e:
-        print >> sys.stderr, "ERROR Error sending webhook request: %s" % e
+        print >> sys.stderr, "ERROR Error sending Teams webhook request: %s" % e
     except ValueError, e:
         print >> sys.stderr, "ERROR Invalid URL: %s" % e
     return False
